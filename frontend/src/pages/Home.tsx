@@ -205,9 +205,7 @@ export function Home() {
           )}
         </div>
 
-        <p className="relative z-10 mt-16 font-mono text-[10px] tracking-[0.35em] text-white/20 uppercase">
-          No algorithm. Only vibes.
-        </p>
+
       </main>
     </div>
   );

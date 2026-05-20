@@ -142,10 +142,10 @@
   }
 
   .input-field {
-    @apply bg-transparent border-0 border-b border-white/20 focus:border-white/50 text-white placeholder-white/25 px-0 py-3 w-full outline-none transition-colors duration-200 text-sm font-sans;
+    @apply bg-transparent border-0 border-b border-white/35 focus:border-white/65 text-white placeholder-white/45 px-0 py-3 w-full outline-none transition-colors duration-200 text-sm font-sans;
   }
 
   .label {
-    @apply text-white/40 text-[10px] font-bold tracking-[0.2em] uppercase mb-3 block;
+    @apply text-white/65 text-[10px] font-bold tracking-[0.2em] uppercase mb-3 block;
   }
 }
