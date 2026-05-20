@@ -16,32 +16,38 @@ A real-time listening party app where friends join a shared room, add songs via 
 
 ## Local Setup
 
+**1. Clone the repo and install dependencies**
+
 ```bash
-# 1. Clone the repo
 git clone https://github.com/2uchitra/nero-party.git
 cd nero-party
-
-# 2. Install dependencies
 cd backend && npm install
 cd ../frontend && npm install
 ```
 
-Copy the example env file and fill in your Spotify credentials:
+**2. Copy the example env file**
 
 ```bash
 cp backend/.env.example backend/.env
 ```
 
-Then open `backend/.env` and replace `your_client_id_here` and `your_client_secret_here` with your actual credentials (see [Spotify Setup](#spotify-setup) below).
+Before continuing, follow the [Spotify Setup](#spotify-setup) section below to create your Spotify app and get your Client ID and Secret. Then come back here and open `backend/.env` and fill in your credentials.
+
+**3. Set up the database**
 
 ```bash
-# 3. Set up the database
 cd backend && npx prisma db push
+```
 
-# 4. Start the backend (port 3000)
+**4. Start the backend (port 3000)**
+
+```bash
 cd backend && npm run dev
+```
 
-# 5. Start the frontend (port 5173)
+**5. Start the frontend (port 5173)**
+
+```bash
 cd ../frontend && npm run dev
 ```
 
