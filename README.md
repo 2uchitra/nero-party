@@ -26,13 +26,13 @@ cd backend && npm install
 cd ../frontend && npm install
 ```
 
-Create a file called `.env` inside the `backend/` folder with these contents:
+Copy the example env file and fill in your Spotify credentials:
 
+```bash
+cp backend/.env.example backend/.env
 ```
-PORT=3000
-SPOTIFY_CLIENT_ID=your_client_id_here
-SPOTIFY_CLIENT_SECRET=your_client_secret_here
-```
+
+Then open `backend/.env` and replace `your_client_id_here` and `your_client_secret_here` with your actual credentials (see [Spotify Setup](#spotify-setup) below).
 
 ```bash
 # 3. Set up the database
