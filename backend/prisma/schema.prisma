@@ -7,4 +7,59 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-// Design your schema here
+model Party {
+  id                String        @id @default(cuid())
+  code              String        @unique
+  name              String
+  status            String        @default("WAITING") // WAITING | ACTIVE | ENDED
+  maxSongs          Int?
+  timeLimitMinutes  Int?
+  createdAt         DateTime      @default(now())
+  startedAt         DateTime?
+  endedAt           DateTime?
+  participants      Participant[]
+  songs             QueuedSong[]
+}
+
+model Participant {
+  id        String       @id @default(cuid())
+  partyId   String
+  party     Party        @relation(fields: [partyId], references: [id], onDelete: Cascade)
+  name      String
+  isHost    Boolean      @default(false)
+  joinedAt  DateTime     @default(now())
+  ratings   Rating[]
+  songs     QueuedSong[]
+}
+
+model QueuedSong {
+  id            String      @id @default(cuid())
+  partyId       String
+  party         Party       @relation(fields: [partyId], references: [id], onDelete: Cascade)
+  addedById     String
+  addedBy       Participant @relation(fields: [addedById], references: [id])
+  spotifyId     String
+  title         String
+  artist        String
+  album         String
+  albumArt      String
+  previewUrl    String?
+  durationMs    Int
+  position      Int
+  status        String      @default("QUEUED") // QUEUED | PLAYING | PLAYED
+  playedAt      DateTime?
+  ratings       Rating[]
+  createdAt     DateTime    @default(now())
+}
+
+model Rating {
+  id           String     @id @default(cuid())
+  songId       String
+  song         QueuedSong @relation(fields: [songId], references: [id], onDelete: Cascade)
+  participantId String
+  participant  Participant @relation(fields: [participantId], references: [id])
+  score        Int        // 1–5
+  createdAt    DateTime   @default(now())
+
+  @@unique([songId, participantId])
+}
